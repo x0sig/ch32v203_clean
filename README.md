@@ -36,6 +36,10 @@ project-root/
 This Makefile is a convenience wrapper that allows you to build, clean, or flash the entire project from within the `User/` directory.
 
 ### Example Usage
+In the Project folder run:
+```sh
+git submodule update --init
+```
 
 From inside the `User/` directory, run:
 
@@ -78,22 +82,6 @@ Use minichlink to program your device:
    - `-w firmware.bin 0x08000000` writes the binary to the MCU's flash starting at address `0x08000000`.
 
 3. If the board does not reset automatically after flashing, press the reset button or power-cycle the board.
-
-## Troubleshooting
-
-- If nothing happens after flashing, check that:
-  - The correct startup file and linker script are used for your chip.
-  - Your main loop is not empty.
-  - Your toolchain and flags match those in the Makefile.
-- If minichlink reports errors, ensure:
-  - You are specifying the flash address (`0x08000000`) with `-w`.
-  - You are using a `.bin` file for best compatibility.
-  - Your programmer is a WCH-LinkE and is connected properly.
-- If you use submodules, run:
-  ```
-  git submodule update --init --recursive
-  ```
-  after cloning.
 
 ## References
 
