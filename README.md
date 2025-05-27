@@ -1,7 +1,7 @@
 # CH32V203 RISC-V Bare-Metal Firmware Project
 
 This project is a bare-metal firmware template for the [WCH CH32V203](https://www.wch-ic.com/products/CH32V203.html) RISC-V microcontroller.  
-It is designed for use with the official CH32V20x SDK, the RISC-V GCC toolchain with newlib/newlib-nano, and supports flashing via [minichlink](https://github.com/kprasadvnsi/minichlink).
+It is designed for use with the official CH32V20x SDK, the RISC-V GCC toolchain with newlib/newlib-nano, and supports flashing via [minichlink](https://github.com/cnlohr/ch32fun/tree/master/minichlink).
 
 ## Features
 
@@ -17,7 +17,7 @@ It is designed for use with the official CH32V20x SDK, the RISC-V GCC toolchain 
 |-------------------------|---------------------------------|---------------------------------------|
 | riscv64-unknown-elf-gcc | RISC-V cross-compiler           | [riscv-gnu-toolchain](https://github.com/riscv-collab/riscv-gnu-toolchain) |
 | newlib/newlib-nano      | Embedded C standard library     | [newlib](https://sourceware.org/newlib/) |
-| minichlink              | Flashing via WCH-Link           | [minichlink](https://github.com/kprasadvnsi/minichlink) |
+| minichlink              | Flashing via WCH-Link           | [minichlink](https://github.com/cnlohr/ch32fun/tree/master/minichlink) |
 | CH32V20x SDK            | MCU peripheral library           | [WCH official site](https://www.wch-ic.com/downloads/CH32V203EVT_ZIP.html) |
 
 ## Project Structure
@@ -97,11 +97,9 @@ Use minichlink to program your device:
 
 ## References
 
-- [WCH CH32V203 Product Page](https://www.wch-ic.com/products/CH32V203.html)
-- [CH32V203 SDK Download](https://www.wch-ic.com/downloads/CH32V203EVT_ZIP.html)
 - [riscv-gnu-toolchain](https://github.com/riscv-collab/riscv-gnu-toolchain)
-- [newlib](https://sourceware.org/newlib/)
-- [minichlink](https://github.com/kprasadvnsi/minichlink)
+- [minichlink](https://github.com/cnlohr/ch32fun/tree/master/minichlink)
+- [ch32v20x](https://github.com/openwch/ch32v20x/tree/6209b6e7f910e313eaa93354dc3b29608431f725)
 - [CH32V203 Documentation (WCH)](https://www.wch-ic.com/products/CH32V203.html)
 
 ## License
