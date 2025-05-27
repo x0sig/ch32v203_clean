@@ -3,9 +3,11 @@ ROOT_DIR := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
 CH32V20X_DIR := $(ROOT_DIR)ch32v20x/EVT/EXAM/SRC
 USER_DIR := .
 BUILD_DIR := $(ROOT_DIR)build
+MINICHLINK_BIN := $(ROOT_DIR)/minichlink/minichlink
 
 # Use your existing compiler
-CROSS_COMPILE := /home/user/ch32v203/riscv-none-elf-gcc/install/bin/riscv64-unknown-elf-
+RISCV_GCC_DIR := $(ROOT_DIR)/riscv-none-elf-gcc/
+CROSS_COMPILE := $(RISCV_GCC_DIR)/install/bin/riscv64-unknown-elf-
 
 # Select ONLY ONE startup file (edit as needed)
 STARTUP_FILE := Startup/startup_ch32v20x_D6.S
@@ -37,7 +39,7 @@ INCLUDES := -I$(CH32V20X_DIR)/Core \
 CFLAGS += -march=rv32imac_zicsr -mabi=ilp32 -msmall-data-limit=8 -msave-restore -Os -ffunction-sections -fdata-sections -fno-common -Wunused -Wuninitialized -g
 LDFLAGS += -march=rv32imac_zicsr -mabi=ilp32 -nostartfiles -Wl,--gc-sections --specs=nano.specs --specs=nosys.specs
 
-.PHONY: all clean
+.PHONY: all clean flash riscv-none-elf-gcc minichlink
 
 all: $(TARGET)
 
@@ -59,6 +61,21 @@ $(BUILD_DIR)/user/%.o: $(USER_DIR)/%.cpp
 
 $(TARGET): $(SDK_OBJ) $(USER_OBJ) $(LDSCRIPT)
 	$(CROSS_COMPILE)gcc $(LDFLAGS) -T$(LDSCRIPT) -o $@ $(SDK_OBJ) $(USER_OBJ)
+
+$(RISCV_GCC_DIR)/config.status:
+	mkdir -p $(RISCV_GCC_DIR)/install
+	cd $(RISCV_GCC_DIR) && ./configure --prefix=$(RISCV_GCC_DIR)/install
+
+# Build the toolchain
+riscv-none-elf-gcc: $(RISCV_GCC_DIR)/config.status
+	$(MAKE) -C $(RISCV_GCC_DIR)
+
+# Build minichlink
+minichlink:
+	$(MAKE) -C $(MINICHLINK_DIR)
+
+flash: all
+	$(MINICHLINK_BIN) -E -w $(USER_DIR)/firmware.elf 0x08000000
 
 clean:
 	rm -rf $(BUILD_DIR) $(USER_DIR)/firmware.elf
