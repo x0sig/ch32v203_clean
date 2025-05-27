@@ -1,0 +1,6 @@
+[submodule "ch32v20x"]
+	path = ch32v20x
+	url = https://github.com/openwch/ch32v20x.git
+[submodule "riscv-none-elf-gcc"]
+	path = riscv-none-elf-gcc
+	url = https://github.com/riscv-collab/riscv-gnu-toolchain.git
