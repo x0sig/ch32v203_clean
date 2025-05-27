@@ -17,7 +17,7 @@ It is designed for use with the official CH32V20x SDK, the RISC-V GCC toolchain 
 |-------------------------|---------------------------------|---------------------------------------|
 | riscv64-unknown-elf-gcc | RISC-V cross-compiler           | [riscv-gnu-toolchain](https://github.com/riscv-collab/riscv-gnu-toolchain) |
 | minichlink              | Flashing via WCH-Link           | [minichlink](https://github.com/cnlohr/ch32fun/tree/master/minichlink) |
-| CH32V20x SDK            | MCU peripheral library           | [WCH official repo](https://www.wch-ic.com/products/CH32V203.html) |
+| CH32V20x SDK            | MCU peripheral library           | [WCH official repo](https://github.com/openwch/ch32v20x/tree/6209b6e7f910e313eaa93354dc3b29608431f725) |
 
 ## Project Structure
 
