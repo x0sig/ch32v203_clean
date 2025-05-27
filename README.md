@@ -31,22 +31,50 @@ project-root/
 └── README.md                # This file
 ```
 
-## Prerequisites
-
-- RISC-V GCC toolchain (`riscv64-unknown-elf-gcc`) with newlib/newlib-nano
-- minichlink and a WCH-LinkE programmer
-- CH32V203 SDK (download and extract as shown above)
-
 ## Building the Project
 
-1. Ensure your toolchain binaries (`riscv64-unknown-elf-gcc`, `riscv64-unknown-elf-objcopy`, etc.) are in your `PATH`.
-2. Download and extract the CH32V20x SDK into the `ch32v20x/EVT/EXAM/SRC` directory.
-3. Open a terminal in the project root directory.
-4. Run:
-   ```
-   make
-   ```
-   This will build `firmware.elf` and `firmware.bin` in the project directory.
+Thank you for clarifying and sharing your **user/Makefile**.
+Here’s a concise README snippet you can include in your project or in the `User/` directory to explain its purpose and usage:
+
+---
+
+## User/Makefile Usage
+
+This Makefile is a convenience wrapper that allows you to build, clean, or flash the entire project from within the `User/` directory.
+
+**How it works:**
+- It simply forwards all commands to the main project Makefile located at `../../../../../../Makefile`.
+- This keeps your workflow simple: you can type `make`, `make clean`, or `make flash` in the `User/` directory, and the main Makefile will handle the actual build and flash logic.
+
+### Example Usage
+
+From inside the `User/` directory, run:
+
+```sh
+make        # Builds the whole project
+make clean  # Cleans all build artifacts
+make flash  # Flashes the firmware to the device (if supported)
+```
+
+### How It Works
+
+```makefile
+MAKEFILE_PATH := ../../../../../../Makefile
+
+all:
+	$(MAKE) -f $(MAKEFILE_PATH) all
+
+clean:
+	$(MAKE) -f $(MAKEFILE_PATH) clean
+
+flash:
+	$(MAKE) -f $(MAKEFILE_PATH) flash
+
+.PHONY: all clean flash
+```
+
+- `MAKEFILE_PATH` points to the main Makefile relative to the `User/` directory.
+- Each target (`all`, `clean`, `flash`) simply calls the corresponding target in the main Makefile.
 
 ## Flashing the Firmware
 
