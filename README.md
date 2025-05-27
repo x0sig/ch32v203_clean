@@ -72,7 +72,7 @@ Use minichlink to program your device:
 1. Connect your WCH-LinkE programmer to your CH32V203 board and to your computer.
 2. Flash the binary file to the MCU:
    ```
-   minichlink -E -w firmware.bin 0x08000000
+   minichlink -E -w firmware.elf 0x08000000
    ```
    - `-E` erases the chip before flashing.
    - `-w firmware.bin 0x08000000` writes the binary to the MCU's flash starting at address `0x08000000`.
