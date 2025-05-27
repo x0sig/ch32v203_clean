@@ -31,20 +31,9 @@ project-root/
 └── README.md                # This file
 ```
 
-## Building the Project
-
-Thank you for clarifying and sharing your **user/Makefile**.
-Here’s a concise README snippet you can include in your project or in the `User/` directory to explain its purpose and usage:
-
----
-
 ## User/Makefile Usage
 
 This Makefile is a convenience wrapper that allows you to build, clean, or flash the entire project from within the `User/` directory.
-
-**How it works:**
-- It simply forwards all commands to the main project Makefile located at `../../../../../../Makefile`.
-- This keeps your workflow simple: you can type `make`, `make clean`, or `make flash` in the `User/` directory, and the main Makefile will handle the actual build and flash logic.
 
 ### Example Usage
 
